@@ -1,54 +1,54 @@
-# UI lab results
+# ผลการทำแล็บ UI
 
-Tool parts that I chose:
+ส่วนของเครื่องมือที่เลือกทำ:
 - Part 3: Robot Framework
 - Part 4: Cypress
 
 ## Part 0
-- Step 0.1, Chrome version: 157.0.8103.39
-- Step 0.3, ChromeDriver version: 157.0.8103.39
-- Step 0.4, locator of Pizza, Please!: `button[name='pizza-please']` (or `name=pizza-please`)
-- Step 0.4, locator of Excluded tools: `css=select` (or `select`)
-- Step 0.4, locator of Must be vegetarian: `id=default-checkbox` (or `#default-checkbox`)
-- Step 0.4, locator of Custom Pizza Name: `input#pizza-name`
-- Step 0.5, pizza name, tool and calories of the run by hand: Lab Pizza 20261105-154729, Pizza cutter, 400 calories per slice
+- Step 0.1, เวอร์ชัน Chrome: 157.0.8103.39
+- Step 0.3, เวอร์ชัน ChromeDriver: 157.0.8103.39
+- Step 0.4, locator ของ Pizza, Please!: `button[name='pizza-please']` (หรือ `name=pizza-please`)
+- Step 0.4, locator ของ Excluded tools: `css=select` (หรือ `select`)
+- Step 0.4, locator ของ Must be vegetarian: `id=default-checkbox` (หรือ `#default-checkbox`)
+- Step 0.4, locator ของ Custom Pizza Name: `input#pizza-name`
+- Step 0.5, ชื่อพิซซ่า เครื่องมือ และแคลอรี่ จากการรันด้วยมือ: Lab Pizza 20261105-154729, Pizza cutter, 400 แคลอรี่ต่อชิ้น
 
-| Step | Actual result | Pass or fail |
-|------|---------------|--------------|
-| 1 | The heading reads "Looking to break out of your pizza routine?" | Pass |
-| 2 | Advanced switch toggled on; Max Calories per Slice, Excluded tools, Must be vegetarian, and Custom Pizza Name appear | Pass |
-| 3 | Fields show 600, Knife selected in Excluded tools, vegetarian checkbox ticked, and pizza name "Lab Pizza 20261105-154729" | Pass |
-| 4 | Recommendation shows pizza name "Lab Pizza 20261105-154729", tool "Pizza cutter" (different from Knife), and 400 calories per slice (<= 600) | Pass |
-| 5 | Clicked "Love it!" button without logging in; message displays "Please log in first." in #rate-result | Pass |
-| 6 | Navigated to /admin, signed in as admin/admin; page shows "Latest pizza recommendations" | Pass |
-| 7 | Found pizza "Lab Pizza 20261105-154729" in the list with tool "Pizza cutter", matching step 4 | Pass |
+| Step | การกระทำ | ผลที่เกิดขึ้นจริง | ผ่านหรือไม่ผ่าน |
+|------|----------|-------------------|-----------------|
+| 1 | เปิดหน้าแรกของ QuickPizza | หัวข้อแสดงข้อความ "Looking to break out of your pizza routine?" | ผ่าน |
+| 2 | เปิดสวิตช์ Advanced | สวิตช์ Advanced เปิดอยู่ และมีช่อง Max Calories per Slice, Excluded tools, Must be vegetarian และ Custom Pizza Name ปรากฏขึ้น | ผ่าน |
+| 3 | กรอกข้อจำกัดและชื่อ (600, Knife, ติ๊ก vegetarian, ชื่อพิซซ่า) | ช่องแสดงค่า 600, เลือก Knife ใน Excluded tools, ติ๊กช่อง vegetarian แล้ว และชื่อพิซซ่าคือ "Lab Pizza 20261105-154729" | ผ่าน |
+| 4 | คลิก Pizza, Please! | ผลแนะนำแสดงชื่อพิซซ่า "Lab Pizza 20261105-154729", เครื่องมือ "Pizza cutter" (ไม่ใช่ Knife) และ 400 แคลอรี่ต่อชิ้น (<= 600) | ผ่าน |
+| 5 | คลิก Love it! โดยไม่ล็อกอิน | คลิกปุ่ม "Love it!" โดยไม่ล็อกอิน แล้วข้อความ "Please log in first." แสดงใน #rate-result | ผ่าน |
+| 6 | เปิด /admin และล็อกอินด้วย admin / admin | ไปที่ /admin และล็อกอินด้วย admin/admin หน้าแสดง "Latest pizza recommendations" | ผ่าน |
+| 7 | หาชื่อพิซซ่าในรายการ | พบพิซซ่า "Lab Pizza 20261105-154729" ในรายการ พร้อมเครื่องมือ "Pizza cutter" ตรงกับ step 4 | ผ่าน |
 
 ## Part 3: Robot Framework
 - robot --version: Robot Framework 7.5.1 (Python 3.14.7 on win32)
-- Step 3.2, failure message for the wrong title: Title should have been 'Web Form' but was 'Web form'.
-- Step 3.8, run 1, result, elapsed time and pizza name: PASS, 8.70 s, Lab Pizza 20261105-154729
-- Step 3.8, run 2, result, elapsed time and pizza name: PASS, 8.44 s, Lab Pizza 20261105-154805
+- Step 3.2, ข้อความ error เมื่อตั้งชื่อ title ผิด: Title should have been 'Web Form' but was 'Web form'.
+- Step 3.8, รันครั้งที่ 1, ผล, เวลาที่ใช้ และชื่อพิซซ่า: PASS, 8.70 วินาที, Lab Pizza 20261105-154729
+- Step 3.8, รันครั้งที่ 2, ผล, เวลาที่ใช้ และชื่อพิซซ่า: PASS, 8.44 วินาที, Lab Pizza 20261105-154805
 
 ## Part 4: Cypress
-- node --version, npm --version and npx cypress version: node v24.19.0, npm 11.17.0, npx cypress 16.2.1
-- Step 4.3, failure message for the wrong title: Timed out retrying after 10000ms: expected 'Web form' to equal 'Web Form'
-- Step 4.6, tool and calories in the answer of POST /api/pizza: Tool: Scissors, Calories per slice: 400
-- Step 4.7, the line of the admin list that shows your pizza: Lab Pizza 20261105-155149 (tool=Scissors, ingredients_number=5) (newest)
-- Step 4.8, run 1, result, duration and pizza name: All specs passed! (2 passed), 00:10, Lab Pizza 20261105-155149
-- Step 4.8, run 2, result, duration and pizza name: All specs passed! (2 passed), 00:10, Lab Pizza 20261105-155301
-- Step 4.9 (optional), browser and result: Microsoft Edge 156 (headless), All specs passed! (2 passed, duration 00:10)
+- node --version, npm --version และ npx cypress version: node v24.19.0, npm 11.17.0, npx cypress 16.2.1
+- Step 4.3, ข้อความ error เมื่อตั้งชื่อ title ผิด: Timed out retrying after 10000ms: expected 'Web form' to equal 'Web Form'
+- Step 4.6, เครื่องมือและแคลอรี่ในคำตอบของ POST /api/pizza: Tool: Scissors, Calories per slice: 400
+- Step 4.7, บรรทัดในรายการ admin ที่แสดงพิซซ่าของเรา: Lab Pizza 20261105-155149 (tool=Scissors, ingredients_number=5) (newest)
+- Step 4.8, รันครั้งที่ 1, ผล, ระยะเวลา และชื่อพิซซ่า: All specs passed! (2 passed), 00:10, Lab Pizza 20261105-155149
+- Step 4.8, รันครั้งที่ 2, ผล, ระยะเวลา และชื่อพิซซ่า: All specs passed! (2 passed), 00:10, Lab Pizza 20261105-155301
+- Step 4.9 (ไม่บังคับ), เบราว์เซอร์และผล: Microsoft Edge 156 (headless), All specs passed! (2 passed, ระยะเวลา 00:10)
 
 ## Part B
-1. The tests locate the "Max Calories per Slice" box through its preceding label rather than its id because all three number input boxes on the QuickPizza page share the identical attribute `id="floating_filled"`. In standard HTML, an id must be unique across the document, so querying by `#floating_filled` matches three distinct elements (`$$('#floating_filled').length` returns 3) and cannot distinguish the calories field reliably. To allow tests to use a direct ID, the developers should assign unique IDs to each field, such as `id="max-calories-per-slice"`, or attach a dedicated testing attribute like `data-testid="max-calories"`. This change helps testers by providing an unambiguous, fast, and resilient locator that does not depend on DOM hierarchy or label text phrasing that could change during localization or redesigns.
+1. เทสต์หา "Max Calories per Slice" ผ่าน label ที่อยู่ก่อนหน้า แทนการใช้ id เพราะช่องกรอกตัวเลขทั้งสามช่องในหน้า QuickPizza ใช้ `id="floating_filled"` เหมือนกันหมด ตามมาตรฐาน HTML ค่า id ต้องไม่ซ้ำกันในเอกสาร การค้นด้วย `#floating_filled` จึงเจอ 3 element (`$$('#floating_filled').length` ได้ 3) และแยกช่องแคลอรี่ออกมาไม่ได้อย่างน่าเชื่อถือ เพื่อให้เทสต์ใช้ id ตรงๆ ได้ ผู้พัฒนาควรกำหนด id ที่ไม่ซ้ำให้แต่ละช่อง เช่น `id="max-calories-per-slice"` หรือเพิ่ม attribute สำหรับการทดสอบโดยเฉพาะ เช่น `data-testid="max-calories"` การเปลี่ยนนี้ช่วยผู้ทดสอบเพราะได้ locator ที่ชัดเจน เร็ว และทนทาน ไม่ขึ้นกับโครงสร้าง DOM หรือถ้อยคำของ label ที่อาจเปลี่ยนเมื่อแปลภาษาหรือออกแบบหน้าใหม่
 
-2. Step 7 compares the tool displayed in the administrative recommendation list with the tool recorded during the customer recommendation step; this check is a Consistency Check oracle (also known as a cross-referencing or invariant test oracle). It verifies that different representations and views of the same entity within the system remain synchronized and consistent. One fault in QuickPizza that this check would catch is a backend persistence or data-mapping bug where the recommendation engine selects a tool (e.g., `Scissors`), but the database insertion routine either drops the value, reverts to a hardcoded default like `Knife`, or misattributes the record to another concurrent session. In our test run, both the recommendation banner and the admin entry confirmed `tool=Scissors`, proving data integrity across subsystems.
+2. Step 7 เทียบเครื่องมือที่แสดงในรายการของ admin กับเครื่องมือที่บันทึกไว้ตอนขอคำแนะนำของลูกค้า การตรวจนี้เป็น test oracle แบบ Consistency Check (หรือเรียกว่า cross-referencing / invariant oracle) ซึ่งตรวจว่าข้อมูลชิ้นเดียวกันที่แสดงในมุมมองต่างๆ ของระบบยังตรงกัน ข้อบกพร่องหนึ่งใน QuickPizza ที่การตรวจนี้จับได้ คือบั๊กการบันทึกหรือการแมปข้อมูลฝั่ง backend เช่น ระบบแนะนำเครื่องมือ `Scissors` แต่ขั้นตอนบันทึกลงฐานข้อมูลทำค่านี้หายไป เปลี่ยนเป็นค่าตั้งต้น เช่น `Knife` หรือไปบันทึกให้ session อื่น ในการรันของเรา ทั้งแบนเนอร์ผลแนะนำและรายการใน admin แสดง `tool=Scissors` ตรงกัน แสดงว่าข้อมูลสอดคล้องกันระหว่างระบบย่อย
 
-3. Test case QP-01 currently checks that the vegetarian checkbox is selected and that the HTTP request sends `vegetarian: true`, but it never validates whether the recommended ingredients are actually vegetarian. To check this on the page, the test should inspect the `<ul>` list under `Ingredients:` in the recommendation block and verify that every listed item belongs to an approved vegetarian list, or conversely assert that no banned non-vegetarian items (such as `Ham`, `Pepperoni`, `Bacon`, `Chicken`, or `Beef`) appear in the ingredient list. Alternatively, using Cypress `cy.intercept`, the test can assert directly on the JSON response payload with `expect(response.body.pizza.vegetarian).to.be.true` alongside an assertion against `response.body.pizza.ingredients`. To implement this check, the test requires either a defined test oracle containing the recipe ingredient dictionary from QuickPizza, or access to the backend response object to verify the classification flag.
+3. QP-01 ตรวจแค่ว่าช่อง vegetarian ถูกติ๊ก และคำขอ HTTP ส่ง `vegetarian: true` แต่ไม่ได้ตรวจเลยว่าส่วนผสมที่แนะนำเป็นมังสวิรัติจริง หากจะตรวจบนหน้าเว็บ เทสต์ควรอ่านรายการ `<ul>` ใต้ `Ingredients:` ในบล็อกผลแนะนำ แล้วยืนยันว่าทุกรายการอยู่ในรายการวัตถุดิบมังสวิรัติที่กำหนด หรือยืนยันว่าไม่มีวัตถุดิบต้องห้าม (เช่น `Ham`, `Pepperoni`, `Bacon`, `Chicken`, `Beef`) อีกวิธีคือใช้ `cy.intercept` ของ Cypress ตรวจ JSON response โดยตรง เช่น `expect(response.body.pizza.vegetarian).to.be.true` ร่วมกับการตรวจ `response.body.pizza.ingredients` การทำเช่นนี้ต้องมีแหล่งอ้างอิง (oracle) ที่ระบุว่าวัตถุดิบใดเป็นมังสวิรัติจากสูตรของ QuickPizza หรือเข้าถึง response object ของ backend เพื่อตรวจ flag การจัดประเภท
 
-4. Between Robot Framework and Cypress, the two tools demonstrated distinct approaches to automated UI testing. In terms of waiting, Robot Framework relies on explicit SeleniumLibrary keywords like `Wait Until Element Is Visible` with a configured timeout (`timeout=10s`), whereas Cypress automatically retries every `cy.get` and DOM assertion up to `defaultCommandTimeout: 10000` without requiring manual wait declarations. Writing QP-01 was considerably faster and more fluent in Cypress thanks to native JavaScript method chaining and intuitive request interception via `cy.intercept()`, whereas Robot Framework required maintaining strict tabular whitespace indentation and separating keywords into a resource file. For output readability, Cypress generated clear `.mp4` video recordings showing the real-time Command Log alongside page execution, while Robot Framework produced comprehensive `log.html` and `report.html` files with expandable keyword execution trees and screenshots. In our runs, Robot Framework completed in approximately 8.5 seconds per run, while Cypress completed its entire spec suite in 10 seconds.
+4. Robot Framework รอด้วย keyword ของ SeleniumLibrary ที่เขียนเอง เช่น `Wait Until Element Is Visible` พร้อม timeout (`timeout=10s`) ส่วน Cypress retry ทุก `cy.get` และ assertion บน DOM โดยอัตโนมัติสูงสุด `defaultCommandTimeout: 10000` โดยไม่ต้องเขียนคำสั่งรอเอง การเขียน QP-01 ด้วย Cypress เร็วและลื่นกว่ามาก เพราะเป็น JavaScript ที่ต่อ method เป็น chain ได้ และดักคำขอด้วย `cy.intercept()` ได้ง่าย ขณะที่ Robot Framework ต้องระวังการย่อหน้าแบบตารางและแยก keyword ไปไว้ในไฟล์ resource ด้านความอ่านง่ายของผลลัพธ์ Cypress ให้วิดีโอ `.mp4` ที่เห็น Command Log คู่กับหน้าเว็บแบบเรียลไทม์ ส่วน Robot Framework ให้ `log.html` และ `report.html` ที่ขยายดูต้นไม้ของ keyword และภาพหน้าจอได้ละเอียด เวลาที่ใช้ในการรันจริง Robot Framework ใช้ประมาณ 8.5 วินาทีต่อรอบ และ Cypress รันทั้งชุด spec เสร็จใน 10 วินาที
 
-5. For the automated UI tests in Project 2, I would choose Cypress as the primary automation tool. First, Cypress's built-in automatic waiting and retry mechanism dramatically reduces test flakiness on modern, asynchronous web applications without cluttering test code with repetitive wait statements. Second, Cypress provides native network interception (`cy.intercept`), allowing tests to validate backend API responses and simulate edge cases seamlessly while automatically generating video recordings and screenshots for comprehensive test submission evidence.
+5. สำหรับเทสต์ UI อัตโนมัติของ Project 2 ผมจะเลือก Cypress เป็นเครื่องมือหลัก เหตุผลแรก กลไกรอและ retry อัตโนมัติของ Cypress ลดความไม่เสถียรของเทสต์บนเว็บสมัยใหม่ที่ทำงานแบบ asynchronous ได้มาก โดยโค้ดไม่ต้องรกด้วยคำสั่งรอซ้ำๆ เหตุผลที่สอง Cypress มีการดักเครือข่ายในตัว (`cy.intercept`) ทำให้ตรวจ response จาก backend และจำลองกรณีขอบได้สะดวก อีกทั้งสร้างวิดีโอและภาพหน้าจอเป็นหลักฐานสำหรับส่งงานให้เองโดยอัตโนมัติ
 
-6. In Robot Framework (Part 3), if QuickPizza changed the locator of the calories box, we would only need to update the locator in one place: the `${MAX CALORIES}` variable defined inside `robot/resources/quickpizza.resource` (line 11). The resource file acts as a Page Object layer that encapsulates all DOM locators and technical steps behind human-readable business keywords such as `Fill In The Pizza Request`. Because the test file `pizza_scenario.robot` only invokes this keyword and never references the raw XPath, changes in page implementation are completely isolated from the scenario files, keeping maintenance overhead minimal.
+6. ใน Robot Framework (Part 3) ถ้า QuickPizza เปลี่ยน locator ของช่องแคลอรี่ เราต้องแก้ที่เดียว คือตัวแปร `${MAX CALORIES}` ในไฟล์ `robot/resources/quickpizza.resource` (line 10) ไฟล์ resource ทำหน้าที่เป็นชั้น Page Object ที่ซ่อน locator ของ DOM และขั้นตอนทางเทคนิคไว้หลัง keyword ที่อ่านเข้าใจง่าย เช่น `Fill In The Pizza Request` เนื่องจากไฟล์เทสต์ `pizza_scenario.robot` เรียกแค่ keyword นี้และไม่เคยอ้างถึง XPath ดิบ การเปลี่ยนแปลงของหน้าเว็บจึงไม่กระทบไฟล์ scenario และค่าบำรุงรักษาต่ำ
 
-7. In Cypress (Part 4), QP-01 must be executed as a single test because QuickPizza is deployed across multiple backend instances where a session cookie keeps a browser connected to one specific server holding that session's created pizzas. By design, Cypress clears all cookies, browser storage, and state between separate `it()` blocks to ensure test independence. If steps 6 and 7 were isolated into a second test, the session cookies would be wiped, causing the subsequent admin visit to potentially connect to a different backend node or unlinked session where the pizza generated in Step 4 does not exist in the "Latest pizza recommendations" list, resulting in an element assertion timeout and test failure.
+7. ใน Cypress (Part 4) QP-01 ต้องเป็นเทสต์เดียว เพราะ QuickPizza ทำงานบน backend หลายเครื่อง และใช้ session cookie ผูกเบราว์เซอร์กับเซิร์ฟเวอร์เครื่องเดียวที่เก็บพิซซ่าของ session นั้น โดยการออกแบบ Cypress ล้าง cookie, browser storage และสถานะระหว่าง `it()` แต่ละบล็อกเพื่อให้เทสต์เป็นอิสระต่อกัน ถ้าแยก step 6 และ 7 ไปเป็นเทสต์ที่สอง cookie ของ session จะถูกล้าง การเข้าหน้า admin อาจไปที่ backend คนละเครื่องหรือ session ที่ไม่เกี่ยวข้อง ซึ่งไม่มีพิซซ่าที่สร้างใน Step 4 อยู่ในรายการ "Latest pizza recommendations" ทำให้ assertion หา element หมดเวลาและเทสต์ล้มเหลว
